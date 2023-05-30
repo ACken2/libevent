@@ -202,9 +202,9 @@ evutil_date_rfc1123(char *date, const size_t datelen, const struct tm *tm)
 		/** detect _gmtime64()/_gmtime64_s() */
 #elif defined(EVENT__HAVE__GMTIME64_S)
 		errno_t err;
-		err = _gmtime64_s(&sys, &t);
+		err = gmtime_s(&sys, &t);
 		if (err) {
-			event_errx(1, "Invalid argument to _gmtime64_s");
+			event_errx(1, "Invalid argument to gmtime_s");
 		} else {
 			tm = &sys;
 		}
